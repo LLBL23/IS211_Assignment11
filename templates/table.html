@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>To Do List</title>
+	<link rel="stylesheet" href="/static/style.css" />
+</head>
+
+
+<body>
+	<h1>To Do List</h1>
+
+	<div id="taskform"></div>
+
+	<form action="/submit" method="post">
+		<label>Task </label><input type="text" name="task"</input>
+		<label>Email </label><input type="text" name="email"</input>
+
+		<label>Priority </label><select name="priority">
+			<option value="select an option...">Select an option...</option>
+			<option value="low">Low</option>
+			<option value="medium">Medium</option>
+			<option value="high">High</option>
+
+		<input type="submit" value="Add To Do Item"</input>
+	</form>
+
+
+		<table>
+				<style>
+					td {
+					border: 1px solid #999;
+					padding: 0.1em 1em;
+					}
+				</style>
+		<tr>
+			{% for header in headings %}
+			<th>{{ header }}</th>
+			{% endfor %}
+		</tr>
+		{% for row in to_do_items %}
+		<tr>
+			{% for cell in row %}
+			<td>{{ cell }}</td>
+			{% endfor %}
+		</tr>
+		{% endfor %}
+	</table>
+
+	<div id="clearform"></div>
+
+	<form action="/clear" method="post">
+		<input type="submit" value="Clear"</input>
+
+	</form>
+</body>
+</html>
